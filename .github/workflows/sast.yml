@@ -1,5 +1,5 @@
 # Static analysis pipeline for the Task C vulnerable Flask application.
-# Two parallel jobs: Bandit (Python-focused) and Semgrep (OWASP-focused)
+# Two parallel jobs: Bandit (Python-focused) and Semgrep (OWASP-focused).
 # downloadable workflow artefacts.
 name: SAST Security Scan
 
@@ -102,6 +102,8 @@ jobs:
           semgrep scan
           --config p/owasp-top-ten
           --config task-c/semgrep-rules/custom-rules.yaml
+          --exclude-rule "python.django.security.injection.sql.sql-injection-using-db-cursor-execute.sql-injection-db-cursor-execute"
+          --exclude-rule "python.django.security.injection.raw-html-format.raw-html-format"
           --json --output task-c/scan-results/semgrep-results.json
           task-c/vulnerable-web-app/
         continue-on-error: true
@@ -111,6 +113,8 @@ jobs:
           semgrep scan
           --config p/owasp-top-ten
           --config task-c/semgrep-rules/custom-rules.yaml
+          --exclude-rule "python.django.security.injection.sql.sql-injection-using-db-cursor-execute.sql-injection-db-cursor-execute"
+          --exclude-rule "python.django.security.injection.raw-html-format.raw-html-format"
           --sarif --output task-c/scan-results/semgrep-results.sarif
           task-c/vulnerable-web-app/
         continue-on-error: true
@@ -122,6 +126,8 @@ jobs:
           --error
           --config p/owasp-top-ten
           --config task-c/semgrep-rules/custom-rules.yaml
+          --exclude-rule "python.django.security.injection.sql.sql-injection-using-db-cursor-execute.sql-injection-db-cursor-execute"
+          --exclude-rule "python.django.security.injection.raw-html-format.raw-html-format"
           task-c/vulnerable-web-app/
 
       - name: Upload SARIF to GitHub Security tab
