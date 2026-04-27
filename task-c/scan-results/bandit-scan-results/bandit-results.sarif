@@ -1,0 +1,755 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Bandit",
+          "organization": "PyCQA",
+          "rules": [
+            {
+              "id": "B105",
+              "name": "hardcoded_password_string",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-259"
+                ],
+                "precision": "medium"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html"
+            },
+            {
+              "id": "B608",
+              "name": "hardcoded_sql_expressions",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-89"
+                ],
+                "precision": "low"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html"
+            },
+            {
+              "id": "B201",
+              "name": "flask_debug_true",
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-94"
+                ],
+                "precision": "medium"
+              },
+              "helpUri": "https://bandit.readthedocs.io/en/1.9.4/plugins/b201_flask_debug_true.html"
+            }
+          ],
+          "version": "1.9.4",
+          "semanticVersion": "1.9.4"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "endTimeUtc": "2026-04-27T08:52:15Z"
+        }
+      ],
+      "properties": {
+        "metrics": {
+          "_totals": {
+            "loc": 402,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "CONFIDENCE.LOW": 14,
+            "SEVERITY.MEDIUM": 16,
+            "CONFIDENCE.MEDIUM": 4,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.HIGH": 0
+          },
+          "task-c/vulnerable-web-app/app.py": {
+            "loc": 391,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 1,
+            "SEVERITY.MEDIUM": 16,
+            "SEVERITY.HIGH": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 14,
+            "CONFIDENCE.MEDIUM": 4,
+            "CONFIDENCE.HIGH": 0
+          },
+          "task-c/vulnerable-web-app/init_db.py": {
+            "loc": 11,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "SEVERITY.LOW": 0,
+            "SEVERITY.MEDIUM": 0,
+            "SEVERITY.HIGH": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 0,
+            "CONFIDENCE.HIGH": 0
+          }
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "Possible hardcoded password: 'a-very-secret-and-unique-key'"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "app.secret_key = 'a-very-secret-and-unique-key'\n"
+                  },
+                  "endColumn": 48,
+                  "endLine": 11,
+                  "startColumn": 18,
+                  "startLine": 11
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "app = Flask(__name__)\napp.secret_key = 'a-very-secret-and-unique-key'\n\n"
+                  },
+                  "endLine": 12,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B105",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "        query = f\"SELECT * FROM users WHERE username = '{logged_in_user}'\"\n"
+                  },
+                  "endColumn": 57,
+                  "endLine": 21,
+                  "startColumn": 19,
+                  "startLine": 21
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    if logged_in_user:\n        query = f\"SELECT * FROM users WHERE username = '{logged_in_user}'\"\n        current_user = conn.execute(query).fetchone()\n"
+                  },
+                  "endLine": 22,
+                  "startLine": 20
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "LOW",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "            query = f\"INSERT INTO users (username, password) VALUES ('{username}', '{password}')\"\n"
+                  },
+                  "endColumn": 71,
+                  "endLine": 98,
+                  "startColumn": 23,
+                  "startLine": 98
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "        try:\n            query = f\"INSERT INTO users (username, password) VALUES ('{username}', '{password}')\"\n            conn.execute(query)\n"
+                  },
+                  "endLine": 99,
+                  "startLine": 97
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "LOW",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "        query = f\"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'\"\n"
+                  },
+                  "endColumn": 57,
+                  "endLine": 140,
+                  "startColumn": 19,
+                  "startLine": 140
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "        conn = get_db_connection()\n        query = f\"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'\"\n        user = conn.execute(query).fetchone()\n"
+                  },
+                  "endLine": 141,
+                  "startLine": 139
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "LOW",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "        query = f\"UPDATE users SET is_seller = 1 WHERE username = '{logged_in_user}'\"\n"
+                  },
+                  "endColumn": 68,
+                  "endLine": 192,
+                  "startColumn": 19,
+                  "startLine": 192
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    if request.method == 'POST':\n        query = f\"UPDATE users SET is_seller = 1 WHERE username = '{logged_in_user}'\"\n        conn.execute(query)\n"
+                  },
+                  "endLine": 193,
+                  "startLine": 191
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "LOW",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    user = conn.execute(f\"SELECT * FROM users WHERE username = '{logged_in_user}'\").fetchone()\n"
+                  },
+                  "endColumn": 65,
+                  "endLine": 221,
+                  "startColumn": 27,
+                  "startLine": 221
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    conn = get_db_connection()\n    user = conn.execute(f\"SELECT * FROM users WHERE username = '{logged_in_user}'\").fetchone()\n    \n"
+                  },
+                  "endLine": 222,
+                  "startLine": 220
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "        query = f\"INSERT INTO products (name, price, description, seller_name) VALUES ('{name}', '{price}', '{description}', '{logged_in_user}')\"\n"
+                  },
+                  "endColumn": 89,
+                  "endLine": 233,
+                  "startColumn": 19,
+                  "startLine": 233
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\n        query = f\"INSERT INTO products (name, price, description, seller_name) VALUES ('{name}', '{price}', '{description}', '{logged_in_user}')\"\n        conn.execute(query)\n"
+                  },
+                  "endLine": 234,
+                  "startLine": 232
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "LOW",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    user_query = f\"SELECT * FROM users WHERE username = '{logged_in_user}'\"\n"
+                  },
+                  "endColumn": 58,
+                  "endLine": 270,
+                  "startColumn": 20,
+                  "startLine": 270
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    conn = get_db_connection()\n    user_query = f\"SELECT * FROM users WHERE username = '{logged_in_user}'\"\n    user = conn.execute(user_query).fetchone()\n"
+                  },
+                  "endLine": 271,
+                  "startLine": 269
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "LOW",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "        update_query = f\"UPDATE products SET name = '{name}', price = '{price}', description = '{description}' WHERE id = {product_id}\"\n"
+                  },
+                  "endColumn": 54,
+                  "endLine": 283,
+                  "startColumn": 26,
+                  "startLine": 283
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\n        update_query = f\"UPDATE products SET name = '{name}', price = '{price}', description = '{description}' WHERE id = {product_id}\"\n        conn.execute(update_query)\n"
+                  },
+                  "endLine": 284,
+                  "startLine": 282
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "LOW",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    product_query = f\"SELECT * FROM products WHERE id = {product_id}\"\n"
+                  },
+                  "endColumn": 57,
+                  "endLine": 291,
+                  "startColumn": 23,
+                  "startLine": 291
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\n    product_query = f\"SELECT * FROM products WHERE id = {product_id}\"\n    product = conn.execute(product_query).fetchone()\n"
+                  },
+                  "endLine": 292,
+                  "startLine": 290
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "LOW",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    user_query = f\"SELECT * FROM users WHERE username = '{logged_in_user}'\"\n"
+                  },
+                  "endColumn": 58,
+                  "endLine": 328,
+                  "startColumn": 20,
+                  "startLine": 328
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    conn = get_db_connection()\n    user_query = f\"SELECT * FROM users WHERE username = '{logged_in_user}'\"\n    user = conn.execute(user_query).fetchone()\n"
+                  },
+                  "endLine": 329,
+                  "startLine": 327
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "LOW",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    delete_query = f\"DELETE FROM products WHERE id = {product_id}\"\n"
+                  },
+                  "endColumn": 54,
+                  "endLine": 336,
+                  "startColumn": 22,
+                  "startLine": 336
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\n    delete_query = f\"DELETE FROM products WHERE id = {product_id}\"\n    conn.execute(delete_query)\n"
+                  },
+                  "endLine": 337,
+                  "startLine": 335
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "LOW",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "        user_query = f\"SELECT * FROM users WHERE username = '{logged_in_user}'\"\n"
+                  },
+                  "endColumn": 62,
+                  "endLine": 352,
+                  "startColumn": 24,
+                  "startLine": 352
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    if logged_in_user:\n        user_query = f\"SELECT * FROM users WHERE username = '{logged_in_user}'\"\n        current_user = conn.execute(user_query).fetchone()\n"
+                  },
+                  "endLine": 353,
+                  "startLine": 351
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "LOW",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "        query = f\"INSERT INTO reviews (product_id, author_name, comment) VALUES ({product_id}, '{logged_in_user}', '{comment}')\"\n"
+                  },
+                  "endColumn": 82,
+                  "endLine": 362,
+                  "startColumn": 19,
+                  "startLine": 362
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "        comment = request.form['comment']\n        query = f\"INSERT INTO reviews (product_id, author_name, comment) VALUES ({product_id}, '{logged_in_user}', '{comment}')\"\n        conn.execute(query)\n"
+                  },
+                  "endLine": 363,
+                  "startLine": 361
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "LOW",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    product_query = f'SELECT * FROM products WHERE id = {product_id}'\n"
+                  },
+                  "endColumn": 57,
+                  "endLine": 370,
+                  "startColumn": 23,
+                  "startLine": 370
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "\n    product_query = f'SELECT * FROM products WHERE id = {product_id}'\n    product = conn.execute(product_query).fetchone()\n"
+                  },
+                  "endLine": 371,
+                  "startLine": 369
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "LOW",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    reviews_query = f'SELECT * FROM reviews WHERE product_id = {product_id}'\n"
+                  },
+                  "endColumn": 64,
+                  "endLine": 373,
+                  "startColumn": 23,
+                  "startLine": 373
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    \n    reviews_query = f'SELECT * FROM reviews WHERE product_id = {product_id}'\n    reviews = conn.execute(reviews_query).fetchall()\n"
+                  },
+                  "endLine": 374,
+                  "startLine": 372
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "LOW",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Possible SQL injection vector through string-based query construction."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    user = conn.execute(f\"SELECT * FROM users WHERE username = '{logged_in_user}'\").fetchone()\n"
+                  },
+                  "endColumn": 65,
+                  "endLine": 429,
+                  "startColumn": 27,
+                  "startLine": 429
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    conn = get_db_connection()\n    user = conn.execute(f\"SELECT * FROM users WHERE username = '{logged_in_user}'\").fetchone()\n    \n"
+                  },
+                  "endLine": 430,
+                  "startLine": 428
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B608",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    app.run(debug=True)\n"
+                  },
+                  "endColumn": 24,
+                  "endLine": 465,
+                  "startColumn": 5,
+                  "startLine": 465
+                },
+                "artifactLocation": {
+                  "uri": "task-c/vulnerable-web-app/app.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "if __name__ == '__main__':\n    app.run(debug=True)\n    \n"
+                  },
+                  "endLine": 466,
+                  "startLine": 464
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B201",
+          "ruleIndex": 2
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json"
+}

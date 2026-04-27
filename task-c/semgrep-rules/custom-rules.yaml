@@ -1,0 +1,17 @@
+rules:
+  - id: flask-set-cookie-missing-httponly
+    patterns:
+      - pattern: $RESP.set_cookie(...)
+      - pattern-not: $RESP.set_cookie(..., httponly=True, ...)
+    message: >-
+      Cookie set without the httponly flag. Client-side JavaScript can read
+      this cookie, creating a session-theft vector if cross-site scripting
+      is present elsewhere in the application.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      cwe:
+        - "CWE-1004: Sensitive Cookie Without 'HttpOnly' Flag"
+      owasp:
+        - "A05:2021 - Security Misconfiguration"
+      confidence: HIGH

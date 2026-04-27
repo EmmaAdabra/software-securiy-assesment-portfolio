@@ -1,0 +1,142 @@
+# Static analysis pipeline for the Task C vulnerable Flask application.
+# Two parallel jobs: Bandit (Python-focused) and Semgrep (OWASP-focused)
+# downloadable workflow artefacts.
+name: SAST Security Scan
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "task-c/**"
+      - ".github/workflows/sast.yml"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "task-c/**"
+      - ".github/workflows/sast.yml"
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  bandit:
+    name: Bandit Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Bandit
+        run: pip install "bandit[sarif]"
+
+      - name: Create output directory
+        run: mkdir -p task-c/scan-results
+
+      # --exit-zero: write the file even when findings exist
+      - name: Run Bandit (JSON output)
+        run: >
+          bandit -r task-c/vulnerable-web-app/
+          -f json
+          -o task-c/scan-results/bandit-results.json
+          --exit-zero
+
+      - name: Run Bandit (SARIF output)
+        run: >
+          bandit -r task-c/vulnerable-web-app/
+          -f sarif
+          -o task-c/scan-results/bandit-results.sarif
+          --exit-zero
+
+      # Enforcement: fails the job when findings exist
+      - name: Bandit enforcement check
+        run: bandit -r task-c/vulnerable-web-app/
+
+      - name: Upload SARIF to GitHub Security tab
+        if: always()
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: task-c/scan-results/bandit-results.sarif
+          category: bandit
+        continue-on-error: true
+
+      - name: Save results as workflow artefact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bandit-scan-results
+          path: |
+            task-c/scan-results/bandit-results.json
+            task-c/scan-results/bandit-results.sarif
+
+  semgrep:
+    name: Semgrep Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Semgrep
+        run: pip install semgrep
+
+      - name: Create output directory
+        run: mkdir -p task-c/scan-results
+
+      # Django-specific rules from p/owasp-top-ten are excluded because this is a Flask
+      # application. The Django rules fire as false positives (recommending Django QuerySets
+      # and django.shortcuts.render on Flask code). Exclusion is applied at pipeline level
+      # rather than via inline nosemgrep comments because the affected rules use multi-line
+      # taint analysis, which does not honour single-line nosemgrep suppression reliably.
+      - name: Run Semgrep (JSON output)
+        run: >
+          semgrep scan
+          --config p/owasp-top-ten
+          --config task-c/semgrep-rules/custom-rules.yaml
+          --json --output task-c/scan-results/semgrep-results.json
+          task-c/vulnerable-web-app/
+        continue-on-error: true
+
+      - name: Run Semgrep (SARIF output)
+        run: >
+          semgrep scan
+          --config p/owasp-top-ten
+          --config task-c/semgrep-rules/custom-rules.yaml
+          --sarif --output task-c/scan-results/semgrep-results.sarif
+          task-c/vulnerable-web-app/
+        continue-on-error: true
+
+      # Enforcement: --error exits non-zero when findings exist
+      - name: Semgrep enforcement check
+        run: >
+          semgrep scan
+          --error
+          --config p/owasp-top-ten
+          --config task-c/semgrep-rules/custom-rules.yaml
+          task-c/vulnerable-web-app/
+
+      - name: Upload SARIF to GitHub Security tab
+        if: always()
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: task-c/scan-results/semgrep-results.sarif
+          category: semgrep
+        continue-on-error: true
+
+      - name: Save results as workflow artefact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: semgrep-scan-results
+          path: |
+            task-c/scan-results/semgrep-results.json
+            task-c/scan-results/semgrep-results.sarif

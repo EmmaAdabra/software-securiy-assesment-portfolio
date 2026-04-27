@@ -1,0 +1,2730 @@
+{
+  "version": "2.6.0",
+  "summary": {
+    "title": "Student Exam Management System Threat Model",
+    "owner": "Emmanuel Adabra",
+    "description": "Threat model for a hypothetical web-based exam platform supporting student exam taking, lecturer exam authoring and grading, and administrator user and audit management. Federated authentication via a school identity provider",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 2,
+        "title": "Level 2 — Submission and Grading",
+        "diagramType": "STRIDE",
+        "placeholder": "Level 2 decomposition of P3 Submission Handler and P4 Grading.",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.6.0",
+        "cells": [
+          {
+            "position": {
+              "x": 10,
+              "y": -175.00000000000034
+            },
+            "size": {
+              "width": 1560,
+              "height": 200
+            },
+            "attrs": {
+              "text": {
+                "fontSize": 13,
+                "fill": "#CC0000",
+                "refX": 10,
+                "refY": 8,
+                "textAnchor": "start",
+                "textVerticalAnchor": "top",
+                "text": "Internet (untrusted)",
+                "fontWeight": "bold"
+              },
+              "body": {
+                "rx": 8,
+                "ry": 8,
+                "strokeWidth": 2,
+                "fill": "rgba(204,0,0,0.04)",
+                "stroke": "#CC0000"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -50,
+            "id": "97ca7a9f-c74a-43fa-b7d0-24bafe0a7126",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Internet (untrusted)",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "containedElements": [
+                "6b323f24-ffd5-447b-9c37-aee9d05c28c8",
+                "6b999e73-b2ee-4e01-8349-a129918ec9ed"
+              ],
+              "crossingFlows": [
+                "9a87bfb7-caf7-4f2d-a985-028bc03da0e5",
+                "68d7eeb9-1724-44dc-92e5-003f6521bc1a",
+                "ff7f45b8-a86d-4894-91b3-eed64ee8d944",
+                "7afe4a15-fcca-4969-a6eb-6c72544a855b"
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": -20,
+              "y": 190
+            },
+            "size": {
+              "width": 1260,
+              "height": 180
+            },
+            "attrs": {
+              "text": {
+                "fontSize": 13,
+                "fill": "#E65100",
+                "refX": 10,
+                "refY": 8,
+                "textAnchor": "start",
+                "textVerticalAnchor": "top",
+                "text": "P3 Submission Handler — decomposition (service tier)",
+                "fontWeight": "bold"
+              },
+              "body": {
+                "rx": 8,
+                "ry": 8,
+                "strokeWidth": 2,
+                "fill": "rgba(230,81,0,0.04)",
+                "stroke": "#E65100"
+              },
+              "label": {
+                "text": "P3 Submission Handler — decomposition (service tier)"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -50,
+            "id": "b9788611-b447-42a0-b326-fd18e8ee8870",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "P3 Submission Handler — decomposition (service tier)",
+              "description": "Grade Publisher reads the confirmed final grade from DS3b. Read-only access; triggers a publication audit event.",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "containedElements": [
+                "b801fa5f-1606-46a6-b6bc-42262b20e7fd",
+                "290369b7-dd59-4482-98cc-b8038177624a",
+                "2353d11e-c2e0-4971-bb75-a66db551043c"
+              ],
+              "crossingFlows": [
+                "47175a73-7561-4a21-9e80-6d517a6a0057",
+                "c9c7a67f-1939-4e95-b7c3-816b3ddad5b2",
+                "9a87bfb7-caf7-4f2d-a985-028bc03da0e5",
+                "68d7eeb9-1724-44dc-92e5-003f6521bc1a"
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 10.000000000000114,
+              "y": 490
+            },
+            "size": {
+              "width": 1110,
+              "height": 190
+            },
+            "attrs": {
+              "text": {
+                "fontSize": 13,
+                "fill": "#1565C0",
+                "refX": 10,
+                "refY": 8,
+                "textAnchor": "start",
+                "textVerticalAnchor": "top",
+                "text": "P4 Grading — decomposition (service tier)",
+                "fontWeight": "bold"
+              },
+              "body": {
+                "rx": 8,
+                "ry": 8,
+                "strokeWidth": 2,
+                "fill": "rgba(21,101,192,0.04)",
+                "stroke": "#1565C0"
+              },
+              "label": {
+                "text": "P4 Grading — decomposition (service tier)"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -50,
+            "id": "607df3f6-2980-4bd4-a43d-7a44dcd11ff3",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "P4 Grading — decomposition (service tier)",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "containedElements": [
+                "783fc69f-98ac-4403-bc83-958d71b5ab8a",
+                "e92a57e9-3c00-4d3e-a9c2-a14889e27616",
+                "bc865e01-0a9c-436c-b2aa-3257b60d4c3f"
+              ],
+              "crossingFlows": [
+                "85233136-5248-484c-8c7e-d6812108e3fa",
+                "d471a6b1-9b2a-4139-bd28-9be0b6735c34",
+                "f0a9f4f0-3ca7-477e-b879-fe7929c66013",
+                "9ecf0ebd-caaf-44f3-b445-c5ca30307b49",
+                "d2975521-631d-46f0-be73-2ab172d6d1c8",
+                "d5998135-a571-493d-a81d-d21467e2460b",
+                "9fb51de6-c68f-41fb-bc5f-ec632a87dd70",
+                "ff7f45b8-a86d-4894-91b3-eed64ee8d944",
+                "7afe4a15-fcca-4969-a6eb-6c72544a855b",
+                "b6b1c39c-d8d0-4a33-9aff-c9eaa122c203"
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": -315,
+              "y": 847.5000000000017
+            },
+            "size": {
+              "width": 1770,
+              "height": 300
+            },
+            "attrs": {
+              "text": {
+                "fontSize": 13,
+                "fill": "#1B5E20",
+                "refX": 10,
+                "refY": 8,
+                "textAnchor": "start",
+                "textVerticalAnchor": "top",
+                "text": "Data tier (most trusted)",
+                "fontWeight": "bold"
+              },
+              "body": {
+                "rx": 8,
+                "ry": 8,
+                "strokeWidth": 2,
+                "fill": "rgba(27,94,32,0.04)",
+                "stroke": "#1B5E20"
+              },
+              "label": {
+                "text": "DS2 Data stor — decomposition"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -50,
+            "id": "db7e7a99-e342-4825-90ee-1c083941d4fa",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "DS2 Data store — decomposition",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "containedElements": [
+                "5819389b-d473-427e-9da6-d2fe791c1a01",
+                "c2897797-9ce3-48fb-9619-a662cc6e85bc",
+                "87e13624-4e42-4fbd-8866-7809d99a2ad2",
+                "efa50103-a67d-4100-9243-b6b4d71b9f6d"
+              ],
+              "crossingFlows": [
+                "85233136-5248-484c-8c7e-d6812108e3fa",
+                "d471a6b1-9b2a-4139-bd28-9be0b6735c34",
+                "f0a9f4f0-3ca7-477e-b879-fe7929c66013",
+                "9ecf0ebd-caaf-44f3-b445-c5ca30307b49",
+                "d2975521-631d-46f0-be73-2ab172d6d1c8",
+                "d5998135-a571-493d-a81d-d21467e2460b",
+                "9fb51de6-c68f-41fb-bc5f-ec632a87dd70",
+                "47175a73-7561-4a21-9e80-6d517a6a0057",
+                "c9c7a67f-1939-4e95-b7c3-816b3ddad5b2",
+                "b6b1c39c-d8d0-4a33-9aff-c9eaa122c203"
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 780,
+              "y": -115.00000000000034
+            },
+            "size": {
+              "width": 180,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Student"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": "4 3"
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 10,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "3b799a2a-4e5a-450a-8a6f-18edd5fb7b33"
+                },
+                {
+                  "group": "right",
+                  "id": "db3b68fb-e66c-49b6-aea0-bcbc16767452"
+                },
+                {
+                  "group": "bottom",
+                  "id": "60d71e3e-92d7-4bba-92a4-0c06584fc0ce"
+                },
+                {
+                  "group": "left",
+                  "id": "39dbf79d-f2a1-483a-ace9-2de64967a42d"
+                }
+              ]
+            },
+            "id": "6b323f24-ffd5-447b-9c37-aee9d05c28c8",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Student",
+              "description": "External user. Covered at Level 1. Included here for submission and grade-publish flow context only.",
+              "isTrustBoundary": false,
+              "outOfScope": true,
+              "reasonOutOfScope": "Covered at Level 1; included here for flow context only.",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 360,
+              "y": -115.00000000000034
+            },
+            "size": {
+              "width": 180,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Lecturer"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": "4 3"
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 10,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "c1d3a48b-a8bf-4ba2-960b-9c5117e87f3f"
+                },
+                {
+                  "group": "right",
+                  "id": "b29dde34-420f-43ee-9af4-5e049fbdfece"
+                },
+                {
+                  "group": "bottom",
+                  "id": "43e2547f-e424-4e37-ba8a-bebbd1f38d90"
+                },
+                {
+                  "group": "left",
+                  "id": "d95eb8f6-2463-47e0-bcfb-9ea1c6444a58"
+                }
+              ]
+            },
+            "id": "6b999e73-b2ee-4e01-8349-a129918ec9ed",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Lecturer",
+              "description": "External staff user. Covered at Level 1. Included here for manual-grade entry flow context only.",
+              "isTrustBoundary": false,
+              "outOfScope": true,
+              "reasonOutOfScope": "Covered at Level 1; included here for flow context only.",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 110,
+              "y": 252.49999999999915
+            },
+            "size": {
+              "width": 200,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "P3.1 Submission Receiver"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 10,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "18f25ba1-b8c0-4b12-b50e-bca4d8a87100"
+                },
+                {
+                  "group": "right",
+                  "id": "05048051-3f2b-4901-bc45-66b4c3262ac3"
+                },
+                {
+                  "group": "bottom",
+                  "id": "77341437-715f-4d45-b921-b0913f300711"
+                },
+                {
+                  "group": "left",
+                  "id": "d80809f9-df0b-46d1-b679-8951d7c27c10"
+                }
+              ]
+            },
+            "id": "b801fa5f-1606-46a6-b6bc-42262b20e7fd",
+            "data": {
+              "type": "tm.Process",
+              "name": "P3.1 Submission Receiver",
+              "description": "HTTP endpoint that accepts POST /submit from the student over HTTPS. Receives the raw JSON payload. No validation at this stage — all input must be treated as untrusted. Hands the raw payload directly to P3.2 for validation.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "privilegeLevel": "Low",
+              "isWebApplication": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "threats": [
+                {
+                  "id": "46f7e929-659c-4a3b-8448-ad61dfc96fd5",
+                  "number": 9,
+                  "title": "Session cookie theft enabling exam impersonation",
+                  "type": "Spoofing",
+                  "status": "Open",
+                  "severity": "High",
+                  "score": "7.6",
+                  "description": "A student's session cookie is stolen via XSS in the exam interface, a compromised browser extension, or shoulder-surfing on a shared machine. The attacker replays the cookie to POST /submit on behalf of the victim, or reads in-progress answers.",
+                  "mitigation": "HttpOnly and Secure flags on session cookies; short TTL (≤ exam window duration); Content Security Policy preventing XSS; token binding or SameSite=Strict; rotate session token on any privilege change.",
+                  "modelType": "STRIDE"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 465.0000000000001,
+              "y": 252.49999999999915
+            },
+            "size": {
+              "width": 200,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "P3.2 Submission Validator"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 10,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "bdef7df2-be55-4209-ae67-b4a1238b9900"
+                },
+                {
+                  "group": "right",
+                  "id": "00cc29ec-dec4-4e6c-ac10-17d346ea0d43"
+                },
+                {
+                  "group": "bottom",
+                  "id": "335253de-286c-4d83-9205-7a509e01817f"
+                },
+                {
+                  "group": "left",
+                  "id": "915a2833-a209-41bd-b6a2-a8a93ad89653"
+                }
+              ]
+            },
+            "id": "290369b7-dd59-4482-98cc-b8038177624a",
+            "data": {
+              "type": "tm.Process",
+              "name": "P3.2 Submission Validator",
+              "description": "Validates the raw payload against the exam schema, checks the submission window is open, verifies the student owns the exam seat, and sanitises free-text input. The trust-elevation point: input north of this process is untrusted; south is structurally validated. Passes the validated payload to P3.3.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "privilegeLevel": "Medium",
+              "isWebApplication": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "threats": [
+                {
+                  "id": "c1caa976-50dd-40c4-b564-41480a77b34b",
+                  "number": 12,
+                  "title": "Submission replay — student resubmits after deadline",
+                  "type": "Tampering",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "score": "6.0",
+                  "description": "A student records a valid POST /submit request made before the deadline and replays it after the window closes to replace a poor answer set with a better one. P3.1 does not check the submission timestamp against the server clock; it trusts the client-supplied timestamp.",
+                  "mitigation": "P3.2 validates the submission window server-side against a server clock, not the client timestamp; the submission payload includes a server-issued nonce that is single-use and expires at the window close; P3.3 stores a server-generated timestamp; any submission after window-close is rejected with a 403 and an audit event.",
+                  "modelType": "STRIDE"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 920,
+              "y": 260
+            },
+            "size": {
+              "width": 200,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "P3.3 Submission Persister"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 10,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "2c16f19d-6127-4666-a08d-40e4e9f4a3e8"
+                },
+                {
+                  "group": "right",
+                  "id": "6fe51060-c182-4b71-8ac2-4e4c0763372c"
+                },
+                {
+                  "group": "bottom",
+                  "id": "4777d3f8-cbee-42db-ae2d-375cd99aa6c2"
+                },
+                {
+                  "group": "left",
+                  "id": "89593746-e66c-4dd2-bf1a-57754ad1a108"
+                }
+              ]
+            },
+            "id": "2353d11e-c2e0-4971-bb75-a66db551043c",
+            "data": {
+              "type": "tm.Process",
+              "name": "P3.3 Submission Persister",
+              "description": "Persists the validated submission to DS3a with a server-generated timestamp and a SHA-256 content hash (tamper evidence). Returns a submission acknowledgement to the student. Appends an audit event to DS3c.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "privilegeLevel": "Medium",
+              "isWebApplication": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 70,
+              "y": 540
+            },
+            "size": {
+              "width": 240,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "P4.1 Auto-Grader"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 10,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "642b081b-966c-4e28-9955-6eb1c9b43d61"
+                },
+                {
+                  "group": "right",
+                  "id": "159ea189-fdb7-463e-9b27-ec092549af99"
+                },
+                {
+                  "group": "bottom",
+                  "id": "7adfcc1b-cee2-4b9b-bc43-57dfda14562d"
+                },
+                {
+                  "group": "left",
+                  "id": "d0373760-d828-4b29-ba5a-58ec154799b9"
+                }
+              ]
+            },
+            "id": "783fc69f-98ac-4403-bc83-958d71b5ab8a",
+            "data": {
+              "type": "tm.Process",
+              "name": "Auto-Grader",
+              "description": "Reads pending submissions from DS3a and the answer key from DS2. Applies the MCQ/short-answer matching logic to compute a provisional mark. Writes the provisional mark to DS3b. Appends a grading audit event to DS3c.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "privilegeLevel": "Medium",
+              "isWebApplication": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 480,
+              "y": 540
+            },
+            "size": {
+              "width": 210,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "P4.2 Manual-Grade Entry"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 10,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "72abe863-fdd0-41bc-9e96-0be7fd751c40"
+                },
+                {
+                  "group": "right",
+                  "id": "56cc9749-2c33-4030-abdc-d54d03fa35d9"
+                },
+                {
+                  "group": "bottom",
+                  "id": "ce08d4b2-eec7-4bca-aeb6-bbf5380967bd"
+                },
+                {
+                  "group": "left",
+                  "id": "4293aeb1-5425-4924-9027-725acdc7648b"
+                }
+              ]
+            },
+            "id": "e92a57e9-3c00-4d3e-a9c2-a14889e27616",
+            "data": {
+              "type": "tm.Process",
+              "name": "Manual-Grade Entry",
+              "description": "Accepts lecturer-authenticated HTTP requests to enter or update a manual mark for an open-ended answer. Writes the mark to DS3b. Appends an audit event to DS3c recording the lecturer identity, mark, and timestamp.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "privilegeLevel": "High",
+              "isWebApplication": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "threats": [
+                {
+                  "id": "062e7b11-9101-4577-883e-d538a2fed4d9",
+                  "number": 13,
+                  "title": "Manual-grade entry without re-authentication (P4.2 privilege escalation)",
+                  "type": "Elevation of privilege",
+                  "status": "Open",
+                  "severity": "High",
+                  "score": "7.6",
+                  "description": "A lecturer's session token is long-lived. An attacker who has obtained the token (via XSS or interception) can submit manual marks through P4.2 without triggering a re-authentication challenge, elevating the effective privilege of their access to grade-writing.",
+                  "mitigation": "Require step-up authentication (re-entry of credentials or MFA prompt) before any grade write via P4.2; session tokens for grade-entry actions have a 15-minute inactivity timeout; all grade writes are logged in DS3c with the session token fingerprint and originating IP.",
+                  "modelType": "STRIDE"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 870,
+              "y": 550
+            },
+            "size": {
+              "width": 210,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "P4.3 Grade Publisher"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 10,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "752c6079-b914-42ab-aee2-480ece670e30"
+                },
+                {
+                  "group": "right",
+                  "id": "bd3fcd48-77f8-46a5-bcbd-5860be13ef82"
+                },
+                {
+                  "group": "bottom",
+                  "id": "8f4ec5b9-26ec-45f9-90d9-6841e9da209f"
+                },
+                {
+                  "group": "left",
+                  "id": "9c2c9c94-5a99-4c87-8d3a-dd0d23e22a55"
+                }
+              ]
+            },
+            "id": "bc865e01-0a9c-436c-b2aa-3257b60d4c3f",
+            "data": {
+              "type": "tm.Process",
+              "name": "P4.3 Grade Publisher",
+              "description": "Reads the finalised grade from DS3b once all marks are confirmed. Publishes the grade to the student over HTTPS. Appends a publication audit event to DS3c. Read-only against DS3b; write-only against DS3c.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "privilegeLevel": "Medium",
+              "isWebApplication": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 90,
+              "y": 980
+            },
+            "size": {
+              "width": 200,
+              "height": 75
+            },
+            "attrs": {
+              "text": {
+                "text": "DS3a — Pending Submissions"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 10,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "a860102b-e2da-409f-874a-8177d63838ed"
+                },
+                {
+                  "group": "right",
+                  "id": "4917794f-bdf3-4f56-8fa1-4e3b0b6524a8"
+                },
+                {
+                  "group": "bottom",
+                  "id": "b3718126-3182-4b93-abcd-51b264064164"
+                },
+                {
+                  "group": "left",
+                  "id": "be061790-0e08-4865-a522-c5893dce0c67"
+                }
+              ]
+            },
+            "id": "5819389b-d473-427e-9da6-d2fe791c1a01",
+            "data": {
+              "type": "tm.Store",
+              "name": "DS3a — Pending Submissions",
+              "description": "Internal queue store holding raw validated submissions awaiting grading. Contains student answer payloads and content hashes. Encrypted at rest; accessible to P3.3 (write) and P4.1 (read). Cleared after grading is finalised.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": true,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 410,
+              "y": 980
+            },
+            "size": {
+              "width": 200,
+              "height": 75
+            },
+            "attrs": {
+              "text": {
+                "text": "DS3b — Final Grades"
+              },
+              "topLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 10,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "182aa511-173d-4fac-87a4-c1c83d4184e9"
+                },
+                {
+                  "group": "right",
+                  "id": "0fe03b6c-31f5-4ce3-92b8-7dd1f9bb9daa"
+                },
+                {
+                  "group": "bottom",
+                  "id": "90b812fb-1ff5-4b19-87f0-ce9a95efc00e"
+                },
+                {
+                  "group": "left",
+                  "id": "5ac9ba4a-c9ab-4a8d-9296-a2ff3e13196a"
+                }
+              ]
+            },
+            "id": "c2897797-9ce3-48fb-9619-a662cc6e85bc",
+            "data": {
+              "type": "tm.Store",
+              "name": "DS3b — Final Grades",
+              "description": "Authoritative grade record. Stores provisional marks from P4.1, manual marks from P4.2, and the confirmed final grade. Encrypted at rest. Write access is restricted to P4.1 and P4.2; P4.3 has read-only access.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": true,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "2aca0770-985e-4c8d-b325-39fbc005b243",
+                  "number": 11,
+                  "title": "Grade tampering via direct DS3b write bypassing the grading workflow",
+                  "type": "Tampering",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "score": "8.0",
+                  "description": "An attacker who has compromised the grading service account (P4.1) can issue arbitrary UPDATE or INSERT statements against DS3b, writing any grade without going through the normal workflow. There is no secondary approval mechanism for grade changes once the service account has database write access.",
+                  "mitigation": "The grading service account is restricted to a stored procedure interface — no direct table UPDATE rights; grade changes trigger a mandatory audit event in DS3c; the stored procedure validates that the mark is within the allowed range and that the exam window has closed; dual-control flag for any post-publish grade change.",
+                  "modelType": "STRIDE"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 990,
+              "y": 980
+            },
+            "size": {
+              "width": 220,
+              "height": 75
+            },
+            "attrs": {
+              "text": {
+                "text": "DS3c — Grade Audit Chain"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 10,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "fd840733-67c4-4247-93d3-d7f121afae83"
+                },
+                {
+                  "group": "right",
+                  "id": "a5ddddcd-154e-4099-b909-32d27402d689"
+                },
+                {
+                  "group": "bottom",
+                  "id": "c04ce16d-2826-4b54-8f38-80c8034e0b63"
+                },
+                {
+                  "group": "left",
+                  "id": "db287fd9-528b-44d7-a01b-2ee03c1c64a6"
+                }
+              ]
+            },
+            "id": "87e13624-4e42-4fbd-8866-7809d99a2ad2",
+            "data": {
+              "type": "tm.Store",
+              "name": "DS3c — Grade Audit Chain",
+              "description": "Append-only, hash-linked audit log for the submission and grading zone. Each entry includes actor identity, action, timestamp, resource reference, and the hash of the previous entry. The application service accounts have INSERT only — no UPDATE or DELETE. Signed to detect tampering.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": true,
+              "isEncrypted": true,
+              "isSigned": true,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": []
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
+            }
+          },
+          {
+            "position": {
+              "x": -220,
+              "y": 980
+            },
+            "size": {
+              "width": 220,
+              "height": 75
+            },
+            "attrs": {
+              "text": {
+                "text": "DS2 — Exam Bank (read-only here)"
+              },
+              "topLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 10,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "528bd68a-1f71-4c21-9d67-16d8d4c07e2a"
+                },
+                {
+                  "group": "right",
+                  "id": "18aac3a7-bf47-4ffc-9c85-227fc40be6a2"
+                },
+                {
+                  "group": "bottom",
+                  "id": "d8ed07b7-9bac-4e8f-a978-e27568889413"
+                },
+                {
+                  "group": "left",
+                  "id": "4575539c-a78e-49c8-ba82-8c141fa41833"
+                }
+              ]
+            },
+            "id": "efa50103-a67d-4100-9243-b6b4d71b9f6d",
+            "data": {
+              "type": "tm.Store",
+              "name": "DS2 — Exam Bank (read-only here)",
+              "description": "Re-drawn from Level 1 for context. At Level 2, P4.1 reads the answer key from this store. The grading service account has SELECT on answer keys only; no write access at this level.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": true,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "53292f6e-44d0-473a-9d7a-18b1831bd051",
+                  "number": 10,
+                  "title": "Pre-exam answer key exposure via unauthorised DS2 read",
+                  "type": "Information disclosure",
+                  "status": "Open",
+                  "severity": "High",
+                  "score": "7.4",
+                  "description": "A student or compromised low-privilege service account reads the answer key from DS2 before the exam window opens. The grading service account used by P4.1 has broader SELECT rights than it needs, making this a viable pivot target.",
+                  "mitigation": "Column-level access control: the grading service account has SELECT on answer-key rows only after the exam window closes; answer keys are stored encrypted with a key that is only accessible to P4.1 at grading time; all answer-key reads produce audit events in DS3c; log and alert on any out-of-window read attempt.",
+                  "modelType": "STRIDE"
+                }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "append audit event",
+              "description": "Manual-Grade Entry appends a mark audit event: lecturer identity, exam ID, mark, and timestamp.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS",
+              "threats": [],
+              "trustBoundaryIds": [
+                "607df3f6-2980-4bd4-a43d-7a44dcd11ff3",
+                "db7e7a99-e342-4825-90ee-1c083941d4fa"
+              ]
+            },
+            "labels": [
+              "append audit event"
+            ],
+            "id": "85233136-5248-484c-8c7e-d6812108e3fa",
+            "source": {
+              "cell": "e92a57e9-3c00-4d3e-a9c2-a14889e27616",
+              "port": "ce08d4b2-eec7-4bca-aeb6-bbf5380967bd"
+            },
+            "target": {
+              "cell": "87e13624-4e42-4fbd-8866-7809d99a2ad2",
+              "port": "fd840733-67c4-4247-93d3-d7f121afae83"
+            },
+            "vertices": [
+              {
+                "x": 670,
+                "y": 870
+              },
+              {
+                "x": 830,
+                "y": 850
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "read final grade",
+              "description": "Grade Publisher reads the confirmed final grade from DS3b. Read-only access; triggers a publication audit event.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS",
+              "threats": [],
+              "trustBoundaryIds": [
+                "607df3f6-2980-4bd4-a43d-7a44dcd11ff3",
+                "db7e7a99-e342-4825-90ee-1c083941d4fa"
+              ]
+            },
+            "labels": [
+              "read final grade"
+            ],
+            "id": "d471a6b1-9b2a-4139-bd28-9be0b6735c34",
+            "source": {
+              "cell": "bc865e01-0a9c-436c-b2aa-3257b60d4c3f",
+              "port": "8f4ec5b9-26ec-45f9-90d9-6841e9da209f"
+            },
+            "target": {
+              "cell": "c2897797-9ce3-48fb-9619-a662cc6e85bc",
+              "port": "0fe03b6c-31f5-4ce3-92b8-7dd1f9bb9daa"
+            },
+            "vertices": [
+              {
+                "x": 890,
+                "y": 970
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "append audit event",
+              "description": "Grade Publisher appends a publication audit event: student ID, exam ID, final grade, and publication timestamp.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS",
+              "threats": [],
+              "trustBoundaryIds": [
+                "607df3f6-2980-4bd4-a43d-7a44dcd11ff3",
+                "db7e7a99-e342-4825-90ee-1c083941d4fa"
+              ]
+            },
+            "labels": [
+              "append audit event"
+            ],
+            "id": "f0a9f4f0-3ca7-477e-b879-fe7929c66013",
+            "source": {
+              "cell": "bc865e01-0a9c-436c-b2aa-3257b60d4c3f",
+              "port": "8f4ec5b9-26ec-45f9-90d9-6841e9da209f"
+            },
+            "target": {
+              "cell": "87e13624-4e42-4fbd-8866-7809d99a2ad2",
+              "port": "fd840733-67c4-4247-93d3-d7f121afae83"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "append audit event",
+              "description": "Auto-Grader appends a grading audit event: exam ID, provisional mark, answer-key version, and timestamp.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS",
+              "threats": [],
+              "trustBoundaryIds": [
+                "607df3f6-2980-4bd4-a43d-7a44dcd11ff3",
+                "db7e7a99-e342-4825-90ee-1c083941d4fa"
+              ]
+            },
+            "labels": [
+              "append audit event"
+            ],
+            "id": "9ecf0ebd-caaf-44f3-b445-c5ca30307b49",
+            "source": {
+              "cell": "783fc69f-98ac-4403-bc83-958d71b5ab8a",
+              "port": "7adfcc1b-cee2-4b9b-bc43-57dfda14562d"
+            },
+            "target": {
+              "cell": "87e13624-4e42-4fbd-8866-7809d99a2ad2",
+              "port": "db287fd9-528b-44d7-a01b-2ee03c1c64a6"
+            },
+            "vertices": [
+              {
+                "x": 250,
+                "y": 880
+              },
+              {
+                "x": 410,
+                "y": 900
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "read answer key",
+              "description": "Auto-Grader reads the published answer key from DS2. Read-only; restricted to answer key rows for the specific exam. Access window enforced at the application layer.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS",
+              "threats": [],
+              "trustBoundaryIds": [
+                "607df3f6-2980-4bd4-a43d-7a44dcd11ff3",
+                "db7e7a99-e342-4825-90ee-1c083941d4fa"
+              ]
+            },
+            "labels": [
+              "read answer key"
+            ],
+            "id": "d2975521-631d-46f0-be73-2ab172d6d1c8",
+            "source": {
+              "cell": "783fc69f-98ac-4403-bc83-958d71b5ab8a",
+              "port": "7adfcc1b-cee2-4b9b-bc43-57dfda14562d"
+            },
+            "target": {
+              "cell": "efa50103-a67d-4100-9243-b6b4d71b9f6d",
+              "port": "528bd68a-1f71-4c21-9d67-16d8d4c07e2a"
+            },
+            "vertices": [
+              {
+                "x": -80,
+                "y": 660
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "read pending submission",
+              "description": "Auto-Grader reads pending validated submissions from DS3a for processing. SELECT only; no write access.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS",
+              "threats": [],
+              "trustBoundaryIds": [
+                "607df3f6-2980-4bd4-a43d-7a44dcd11ff3",
+                "db7e7a99-e342-4825-90ee-1c083941d4fa"
+              ]
+            },
+            "labels": [
+              "read pending submission"
+            ],
+            "id": "d5998135-a571-493d-a81d-d21467e2460b",
+            "source": {
+              "cell": "783fc69f-98ac-4403-bc83-958d71b5ab8a",
+              "port": "7adfcc1b-cee2-4b9b-bc43-57dfda14562d"
+            },
+            "target": {
+              "cell": "5819389b-d473-427e-9da6-d2fe791c1a01",
+              "port": "a860102b-e2da-409f-874a-8177d63838ed"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "write provisional mark",
+              "description": "Auto-Grader writes a provisional mark to DS3b via a stored procedure. No direct table UPDATE rights.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS",
+              "threats": [],
+              "trustBoundaryIds": [
+                "607df3f6-2980-4bd4-a43d-7a44dcd11ff3",
+                "db7e7a99-e342-4825-90ee-1c083941d4fa"
+              ]
+            },
+            "labels": [
+              "write provisional mark"
+            ],
+            "id": "9fb51de6-c68f-41fb-bc5f-ec632a87dd70",
+            "source": {
+              "cell": "783fc69f-98ac-4403-bc83-958d71b5ab8a",
+              "port": "7adfcc1b-cee2-4b9b-bc43-57dfda14562d"
+            },
+            "target": {
+              "cell": "c2897797-9ce3-48fb-9619-a662cc6e85bc",
+              "port": "5ac9ba4a-c9ab-4a8d-9296-a2ff3e13196a"
+            },
+            "vertices": [
+              {
+                "x": 320,
+                "y": 950
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "write submission",
+              "description": "Persists the validated submission record to DS3a with a server timestamp and SHA-256 content hash.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "TLS",
+              "threats": [],
+              "trustBoundaryIds": [
+                "b9788611-b447-42a0-b326-fd18e8ee8870",
+                "db7e7a99-e342-4825-90ee-1c083941d4fa"
+              ]
+            },
+            "labels": [
+              "write submission"
+            ],
+            "id": "47175a73-7561-4a21-9e80-6d517a6a0057",
+            "source": {
+              "cell": "2353d11e-c2e0-4971-bb75-a66db551043c",
+              "port": "4777d3f8-cbee-42db-ae2d-375cd99aa6c2"
+            },
+            "target": {
+              "cell": "5819389b-d473-427e-9da6-d2fe791c1a01",
+              "port": "a860102b-e2da-409f-874a-8177d63838ed"
+            },
+            "vertices": [
+              {
+                "x": 850,
+                "y": 440
+              },
+              {
+                "x": 370,
+                "y": 590
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "append audit event",
+              "description": "Submission Persister appends an audit event to DS3c: student ID, exam ID, timestamp, content hash, and correlation ID.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS",
+              "threats": [],
+              "trustBoundaryIds": [
+                "b9788611-b447-42a0-b326-fd18e8ee8870",
+                "db7e7a99-e342-4825-90ee-1c083941d4fa"
+              ]
+            },
+            "labels": [
+              "append audit event"
+            ],
+            "id": "c9c7a67f-1939-4e95-b7c3-816b3ddad5b2",
+            "source": {
+              "cell": "2353d11e-c2e0-4971-bb75-a66db551043c",
+              "port": "4777d3f8-cbee-42db-ae2d-375cd99aa6c2"
+            },
+            "target": {
+              "cell": "87e13624-4e42-4fbd-8866-7809d99a2ad2",
+              "port": "fd840733-67c4-4247-93d3-d7f121afae83"
+            },
+            "vertices": [
+              {
+                "x": 1210,
+                "y": 470
+              },
+              {
+                "x": 1210,
+                "y": 710
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "submission acknowledgement",
+              "description": "HTTP 200 confirmation returned to the student: submission received, timestamp, and correlation ID. No payload details included.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [],
+              "trustBoundaryIds": [
+                "97ca7a9f-c74a-43fa-b7d0-24bafe0a7126",
+                "b9788611-b447-42a0-b326-fd18e8ee8870"
+              ]
+            },
+            "labels": [
+              "submission acknowledgement"
+            ],
+            "id": "9a87bfb7-caf7-4f2d-a985-028bc03da0e5",
+            "source": {
+              "cell": "6b323f24-ffd5-447b-9c37-aee9d05c28c8",
+              "port": "60d71e3e-92d7-4bba-92a4-0c06584fc0ce"
+            },
+            "target": {
+              "cell": "2353d11e-c2e0-4971-bb75-a66db551043c",
+              "port": "2c16f19d-6127-4666-a08d-40e4e9f4a3e8"
+            },
+            "vertices": [
+              {
+                "x": 890,
+                "y": 10
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "submit answers (HTTPS)",
+              "description": "Student submits completed exam answers as a JSON payload over HTTPS. Crosses the Internet boundary. Raw and untrusted at this point.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [],
+              "trustBoundaryIds": [
+                "97ca7a9f-c74a-43fa-b7d0-24bafe0a7126",
+                "b9788611-b447-42a0-b326-fd18e8ee8870"
+              ]
+            },
+            "labels": [
+              "submit answers (HTTPS)"
+            ],
+            "id": "68d7eeb9-1724-44dc-92e5-003f6521bc1a",
+            "source": {
+              "cell": "6b323f24-ffd5-447b-9c37-aee9d05c28c8",
+              "port": "60d71e3e-92d7-4bba-92a4-0c06584fc0ce"
+            },
+            "target": {
+              "cell": "b801fa5f-1606-46a6-b6bc-42262b20e7fd",
+              "port": "18f25ba1-b8c0-4b12-b50e-bca4d8a87100"
+            },
+            "vertices": [
+              {
+                "x": 330,
+                "y": 140
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "enter manual mark",
+              "description": "Lecturer submits an open-ended mark via authenticated HTTPS request. Requires step-up authentication.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [],
+              "trustBoundaryIds": [
+                "97ca7a9f-c74a-43fa-b7d0-24bafe0a7126",
+                "607df3f6-2980-4bd4-a43d-7a44dcd11ff3"
+              ]
+            },
+            "labels": [
+              "enter manual mark"
+            ],
+            "id": "ff7f45b8-a86d-4894-91b3-eed64ee8d944",
+            "source": {
+              "cell": "6b999e73-b2ee-4e01-8349-a129918ec9ed",
+              "port": "d95eb8f6-2463-47e0-bcfb-9ea1c6444a58"
+            },
+            "target": {
+              "cell": "e92a57e9-3c00-4d3e-a9c2-a14889e27616",
+              "port": "72abe863-fdd0-41bc-9e96-0be7fd751c40"
+            },
+            "vertices": [
+              {
+                "x": -240,
+                "y": 40
+              },
+              {
+                "x": -330,
+                "y": 370
+              },
+              {
+                "x": 370,
+                "y": 450
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "publish grade",
+              "description": "Finalised grade delivered to the student over HTTPS. No raw mark breakdown included by default; only the confirmed result.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [],
+              "trustBoundaryIds": [
+                "97ca7a9f-c74a-43fa-b7d0-24bafe0a7126",
+                "607df3f6-2980-4bd4-a43d-7a44dcd11ff3"
+              ]
+            },
+            "labels": [
+              "publish grade"
+            ],
+            "id": "7afe4a15-fcca-4969-a6eb-6c72544a855b",
+            "source": {
+              "cell": "bc865e01-0a9c-436c-b2aa-3257b60d4c3f",
+              "port": "752c6079-b914-42ab-aee2-480ece670e30"
+            },
+            "target": {
+              "cell": "6b323f24-ffd5-447b-9c37-aee9d05c28c8",
+              "port": "db3b68fb-e66c-49b6-aea0-bcbc16767452"
+            },
+            "vertices": [
+              {
+                "x": 1390,
+                "y": 330
+              },
+              {
+                "x": 1540,
+                "y": 200
+              },
+              {
+                "x": 1510,
+                "y": -70
+              }
+            ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Untrusted-to-trusted (input validation)",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              "Untrusted-to-trusted (input validation)"
+            ],
+            "id": "5c7b90ee-87e5-42b6-bd63-8d37393a1655",
+            "source": {
+              "x": 450,
+              "y": 200
+            },
+            "target": {
+              "x": 450,
+              "y": 370
+            },
+            "vertices": [
+              {
+                "x": 400,
+                "y": 240
+              },
+              {
+                "x": 470,
+                "y": 320
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 20,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "raw payload",
+              "description": "Unvalidated student submission payload passed from the HTTP receiver to the validator. This flow crosses the L2 trust boundary — everything north is untrusted, everything south is validated.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "Internal",
+              "threats": [
+                {
+                  "id": "9ce6c585-a001-4db1-ada2-06dfc0415ad4",
+                  "number": 8,
+                  "title": "Verbose validator error leaks payload fragments",
+                  "type": "Information disclosure",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "score": "6.6",
+                  "description": "When a malformed JSON submission reaches P3.2, the validator throws a parser exception whose default error message includes a fragment of the offending payload. The error is returned to the client in the HTTP response, leaking part of the submission text. In a multi-tenant exam where students cannot see each other's answers, this is a confidentiality break.",
+                  "mitigation": "Catch parser exceptions explicitly in P3.2; return a generic 400 Bad Request with a correlation ID only; log the full error and raw payload server-side only; suppress all stack traces and exception messages from HTTP responses across the application.",
+                  "modelType": "STRIDE"
+                }
+              ],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "raw payload"
+            ],
+            "id": "a81a9c82-561f-46da-83dd-a64df4a62b5d",
+            "source": {
+              "cell": "b801fa5f-1606-46a6-b6bc-42262b20e7fd",
+              "port": "05048051-3f2b-4901-bc45-66b4c3262ac3"
+            },
+            "target": {
+              "cell": "290369b7-dd59-4482-98cc-b8038177624a",
+              "port": "915a2833-a209-41bd-b6a2-a8a93ad89653"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 20,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "validated payload",
+              "description": "Structurally validated and sanitised submission payload, safe to persist. Crosses into trusted processing.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "Internal",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "validated payload"
+            ],
+            "id": "fd639090-965d-4de5-9fde-b56146c19e43",
+            "source": {
+              "cell": "290369b7-dd59-4482-98cc-b8038177624a",
+              "port": "00cc29ec-dec4-4e6c-ac10-17d346ea0d43"
+            },
+            "target": {
+              "cell": "2353d11e-c2e0-4971-bb75-a66db551043c",
+              "port": "89593746-e66c-4dd2-bf1a-57754ad1a108"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 20,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "write manual mark",
+              "description": "Manual mark written to DS3b via a stored procedure interface. Triggers a mandatory audit event in DS3c.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS",
+              "threats": [],
+              "trustBoundaryIds": [
+                "607df3f6-2980-4bd4-a43d-7a44dcd11ff3",
+                "db7e7a99-e342-4825-90ee-1c083941d4fa"
+              ]
+            },
+            "labels": [
+              "write manual mark"
+            ],
+            "id": "b6b1c39c-d8d0-4a33-9aff-c9eaa122c203",
+            "source": {
+              "cell": "e92a57e9-3c00-4d3e-a9c2-a14889e27616",
+              "port": "ce08d4b2-eec7-4bca-aeb6-bbf5380967bd"
+            },
+            "target": {
+              "cell": "c2897797-9ce3-48fb-9619-a662cc6e85bc",
+              "port": "182aa511-173d-4fac-87a4-c1c83d4184e9"
+            },
+            "vertices": [
+              {
+                "x": 545,
+                "y": 880
+              },
+              {
+                "x": 500,
+                "y": 925
+              }
+            ]
+          }
+        ],
+        "description": "Level 2 decomposition of P3 (Submission Handler) and P4 (Grading). Exposes six sub-processes, four internal data stores, and the critical trust boundary between P3.1 (untrusted input receiver) and P3.2 (validated input). Student and Lecturer are marked out of scope — they are fully covered at Level 1."
+      }
+    ],
+    "diagramTop": 3,
+    "reviewer": "",
+    "threatTop": 13
+  }
+}

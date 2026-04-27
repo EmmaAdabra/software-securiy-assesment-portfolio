@@ -1,0 +1,25 @@
+Breakpoint 1 at 0x11cf: file vulnerable.c, line 16.
+Starting program: /mnt/c/Users/ADB/Desktop/software-security-module/task-a/vulnerable 
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.ubuntu.com>
+Debuginfod has been enabled.
+To make this setting permanent, add 'set debuginfod enabled on' to .gdbinit.
+Downloading separate debug info for /lib/ld-linux.so.2
+[###                                                               ]                                                                      Downloading separate debug info for system-supplied DSO at 0xf7fc7000
+[###                                                               ]                                                                      Downloading separate debug info for /lib32/libc.so.6
+[###                                                               ]                                                                      [Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, verifyUser () at vulnerable.c:16
+16	    int authenticated = 0;      /* 0 = denied, 1 = ok — sits after buffer, overflow can flip it */
+$1 = (char (*)[16]) 0xffffcf0c
+$2 = (int *) 0xffffcf1c
+Stack level 0, frame at 0xffffcf30:
+ eip = 0x565561cf in verifyUser (vulnerable.c:16); saved eip = 0x565562ce
+ called by frame at 0xffffcf40
+ source language c.
+ Arglist at 0xffffcf28, args: 
+ Locals at 0xffffcf28, Previous frame's sp is 0xffffcf30
+ Saved registers:
+  ebx at 0xffffcf24, ebp at 0xffffcf28, eip at 0xffffcf2c
