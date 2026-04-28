@@ -2,9 +2,7 @@ name: Task E — Supply Chain Audit (SBOM)
 
 on:
   push:
-    branches:
-      - "main"
-      - "master"
+    branches: [ "main", "master" ]
 
 jobs:
   generate-sbom:
@@ -25,11 +23,6 @@ jobs:
           format: "cyclonedx-json"
           output-file: "sbom.json"
 
-      - name: Verify SBOM generation
-        run: |
-          ls -lah
-          head -20 sbom.json
-
       - name: Upload SBOM artifact
         uses: actions/upload-artifact@v4
         with:
@@ -46,21 +39,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: cyclonedx-sbom
-          path: ./sbom-artifact
-
-      - name: Verify downloaded SBOM
-        run: |
-          echo "Downloaded files:"
-          ls -R ./sbom-artifact
-
-          echo "Preview:"
-          head -20 ./sbom-artifact/sbom.json
 
       - name: Scan SBOM for CVEs with Trivy
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@master
         with:
           scan-type: "sbom"
-          scan-ref: "./sbom-artifact/sbom.json"
+          input: "sbom.json"
           format: "table"
           exit-code: "0"
           severity: "CRITICAL,HIGH"
