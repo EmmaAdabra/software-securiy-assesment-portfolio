@@ -28,7 +28,7 @@ jobs:
       - name: Verify SBOM generation
         run: |
           ls -lah
-          cat sbom.json | head -20
+          head -20 sbom.json
 
       - name: Upload SBOM artifact
         uses: actions/upload-artifact@v4
@@ -50,17 +50,17 @@ jobs:
 
       - name: Verify downloaded SBOM
         run: |
-          echo "Listing downloaded files:"
+          echo "Downloaded files:"
           ls -R ./sbom-artifact
 
-          echo "Preview SBOM:"
-          cat ./sbom-artifact/sbom.json | head -20
+          echo "Preview:"
+          head -20 ./sbom-artifact/sbom.json
 
       - name: Scan SBOM for CVEs with Trivy
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           scan-type: "sbom"
-          input: "./sbom-artifact/sbom.json"
+          scan-ref: "./sbom-artifact/sbom.json"
           format: "table"
           exit-code: "0"
           severity: "CRITICAL,HIGH"
