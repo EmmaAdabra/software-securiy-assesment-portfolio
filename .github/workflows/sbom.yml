@@ -2,7 +2,9 @@ name: Task E — Supply Chain Audit (SBOM)
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches:
+      - "main"
+      - "master"
 
 jobs:
   generate-sbom:
@@ -29,8 +31,7 @@ jobs:
           name: cyclonedx-sbom
           path: sbom.json
 
-# Add a Trivy job to the workflow
-scan-sbom:
+  scan-sbom:
     name: Vulnerability Scan (Trivy)
     runs-on: ubuntu-latest
     needs: generate-sbom
@@ -47,5 +48,5 @@ scan-sbom:
           scan-type: "sbom"
           input: "sbom.json"
           format: "table"
-          exit-code: "0"          # Set to "1" to break the build on CRITICAL findings
+          exit-code: "0"   # Set to "1" to fail build on CRITICAL findings
           severity: "CRITICAL,HIGH"
