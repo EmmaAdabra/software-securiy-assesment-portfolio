@@ -25,6 +25,11 @@ jobs:
           format: "cyclonedx-json"
           output-file: "sbom.json"
 
+      - name: Verify SBOM generation
+        run: |
+          ls -lah
+          cat sbom.json | head -20
+
       - name: Upload SBOM artifact
         uses: actions/upload-artifact@v4
         with:
@@ -41,12 +46,21 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: cyclonedx-sbom
+          path: ./sbom-artifact
+
+      - name: Verify downloaded SBOM
+        run: |
+          echo "Listing downloaded files:"
+          ls -R ./sbom-artifact
+
+          echo "Preview SBOM:"
+          cat ./sbom-artifact/sbom.json | head -20
 
       - name: Scan SBOM for CVEs with Trivy
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: "sbom"
-          input: "sbom.json"
+          input: "./sbom-artifact/sbom.json"
           format: "table"
-          exit-code: "0"   # Set to "1" to fail build on CRITICAL findings
+          exit-code: "0"
           severity: "CRITICAL,HIGH"
